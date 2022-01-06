@@ -78,4 +78,24 @@ const getMTable = (tableId, token) => {
     return instance.get("dispenser/getAMedicineTableWithID?tableId="+tableId+"&token="+token);
 }
 
-export {getSubs,getDeps,getExps,getChar,postChar,postReg, getMeds, postPha, getMedsD, postDis,getLogin, postWithdraw, getMTable}
+const postDoss = (doctorId, token, patientId) => {
+    var formData = new FormData();
+    console.log("while post dossier:");
+    console.log(doctorId);
+    console.log(token);
+    console.log(patientId);
+    formData.append("doctorId", doctorId);
+    formData.append("token", token);
+    formData.append("patientId", patientId);
+    return instance.post("doctor/sendDossierTable", formData);
+}
+
+const getMedicineList = (token) => {
+    return instance.get("doctor/getMedcineList?token="+token);
+}
+
+const getCheckList = (token) => {
+    return instance.get("doctor/getCheckList?token="+token);
+}
+
+export {getSubs,getDeps,getExps,getChar,postChar,postReg, getMeds, postPha, getMedsD, postDis,getLogin, postWithdraw, getMTable, postDoss, getMedicineList, getCheckList}

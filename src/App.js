@@ -13,6 +13,7 @@ import MedicineList from './pharmacist/medicineList'
 import Pharmacist from './pharmacist/pharmacist';
 import DispMedicine from './dispencer/send';
 import Dispenser from './dispencer/dispenser';
+import Doctor from './doctor/doctor';
 /*
 function AppLayout() {
     const [token, setToken] = useState();
@@ -35,7 +36,11 @@ function AppLayout() {
 }
 */
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   /*
   return (
     <div className="App">
@@ -56,8 +61,9 @@ function App() {
     </div>
   );
   */
-
-    return (<Dispenser/>);
+    render() {
+    return <Test upperState={this.state} upperSetState = {this.setState.bind(this)}></Test> 
+    }
 }
 
 export default App;
