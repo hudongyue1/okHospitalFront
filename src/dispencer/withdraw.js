@@ -14,7 +14,7 @@ function GetWithdrawTable(props) {
             console.log(res);
             props.upperSetState({medicineTableArray: res.data.data.medicineTableArray, data: res.data.data, medicineTableId: inputVal});
             console.log(props.upperState);
-            nav("/withdraw/withdrawTable")
+            nav("/dispenser/withdraw/withdrawTable")
         })
     });
     const handleChange = (e) => {
@@ -26,7 +26,7 @@ function GetWithdrawTable(props) {
         <Col span={8} align={'center'}  offset={7}>
             <Input size= "large" value ={inputVal}  style={{width: "400px"}} onChange = {handleChange}/>
         </Col>
-        <button onClick={getWithdrawTable}> 查询账单 </button> <br/>
+        <button onClick={getWithdrawTable}> 查询处方单 </button> <br/>
     </div>);
 }
 
@@ -34,7 +34,7 @@ function ConfirmWithdraw(props) {
     const nav = useNavigate();
     const handleClick = () => {
         postWithdraw(props.upperState.medicineTableId, props.upperState.token).then((res) => {
-            nav("/withdraw");
+            nav("dispenser/withdraw");
         })
     }
     return (<div>
