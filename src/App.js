@@ -63,6 +63,7 @@ function App() {
   );
       {/* <Dispenser/> */
         return (
+<<<<<<< HEAD
           // <div>
           //   <Router>
           //       <Routes>
@@ -73,6 +74,20 @@ function App() {
           //   </Router>
           // </div>
           <Doctor />
+=======
+          <div>
+            <Router>
+                <Routes>
+                    <Route path = "/" element = {<Login/>} exact />
+                    <Route path = "/login" element = {<Login/>}/>
+                    <Route path = "/charger/*" element = {<Charger/>}/> 
+                    <Route path = "/pharmacist/*" element = {<Pharmacist/>}/> 
+                    <Route path = "/dispenser/*" element = {<Dispenser/>}/> 
+                </Routes>    
+            </Router>
+          </div>
+          // <Dispenser />
+>>>>>>> b152797fbb14377f5efc49b2a6beec17c3b78bc0
       );
 }
 

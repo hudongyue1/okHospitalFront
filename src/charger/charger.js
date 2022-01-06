@@ -14,6 +14,9 @@ import RegInf from '../showInf/RegInf';
 import CharInf from '../showInf/CharInf';
 const token =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDE5NzYwMTEsInN1YiI6InB0cHQxIiwiaWF0IjoxNjQxMzcxMjExfQ.b4JUlc9RoYjqC_am8Gm4pglKRnjnZN4PPkPq_eryoxY";
 
+var divStyle = {
+    textAlign: 'center'  
+};
 
 class EnterPatientID extends React.Component {
     constructor(props){
@@ -53,7 +56,7 @@ class EnterPatientID extends React.Component {
         this.props.upperSetState({patientID: e.target.value})
     }
     render() {
-        return <div><Col span={8} align={'center'}  offset={7}><h2>this is page 1</h2> <br/>
+        return <div style={divStyle}><Col span={8} align={'center'}  offset={7}> <br/>
             <span >病人信息:</span>
             <Input size= "large" value = {this.props.upperState.patientID} onChange={this.handleChange} style={{width: "400px"}}/>
             </Col>
@@ -80,7 +83,7 @@ class ConfirmSubscribe extends React.Component {
         this.props.setPage(3);
     }
     render() {
-        return <div><h2>this is page 2</h2>
+        return <div style={divStyle}>
             <span>this is subscribe infrormation{this.props.upperState.subsriptionInf.test}</span> <br/>
             <SubsInf upperState = {this.props.upperState} upperSetState = {this.props.upperSetState}></SubsInf>
             <button onClick={this.confirmSubscribe.bind(this)}> 确认预约 </button>
@@ -108,7 +111,7 @@ function ConfirmRegister(props){
     return (<div><h2>this is page 3</h2>
     <span>this is register information to be filled</span> <br/>
     <InputReg setPage={props.setPage} upperSetState ={props.upperSetState} upperState = {props.upperState}/>
-    <button onClick={chooseDoctor}> 选择医生 </button> <br/>
+
     <button onClick={confirmRegister}> 确认挂号 </button>
     </div>)
 }
@@ -141,7 +144,7 @@ class Registrar extends React.Component {
         this.setState({page: p});
     }
     render() {
-        return (<div><h1>this is a registrar</h1>
+        return (<div>
             {this.state.page == 1 ? <EnterPatientID setPage = {this.setPage.bind(this)} upperState = {this.state} upperSetState = {this.setState.bind(this)}/>:
             this.state.page == 2 ? (<ConfirmSubscribe setPage = {this.setPage.bind(this)} upperState = {this.state} upperSetState = {this.setState.bind(this)}/>):
             this.state.page == 3 ? <ConfirmRegister setPage = {this.setPage.bind(this)} upperState = {this.state} upperSetState = {this.setState.bind(this)}/>:
@@ -166,10 +169,8 @@ function GetChargeTable(props) {
         console.log(inputVal)
         setInputVal(e.target.value);
     }
-    return (<div><h1>this is a charger</h1>
-        <h2>use this to get charge table!</h2>
-        
-        <span>input the id of charge table here!</span> <br/>
+    return (<div>
+        <span>输入账单:</span> <br/>
         <Col span={8} align={'center'}  offset={7}>
             <Input size= "large" value ={inputVal}  style={{width: "400px"}} onChange = {handleChange}/>
         </Col>
@@ -186,8 +187,7 @@ function ConfirmChargeTable(props) {
         
         nav("/charger/charge/pay?id="+tableId);
     });
-    return (<div><h1>this is a charger</h1>
-        <h2>confirm charge table here!</h2>
+    return (<div>
         <span>this is the inf of charge table</span> <br/>
         <CharInf upperSetState = {props.upperSetState} upperState = {props.upperState}></CharInf>
         <button onClick = {toPayCharge}> 确认账单 </button> <br/>
@@ -233,7 +233,7 @@ function Charger (props) {
         
     }   
     return (
-        <div>
+        <div style={divStyle}>
         <Radio.Group  defaultValue={curPage} buttonStyle="solid" onChange={handleChange}>
             <Radio.Button value="charger/register">挂号</Radio.Button>
             <Radio.Button value="charger/charge">收费</Radio.Button>
