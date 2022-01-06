@@ -5,6 +5,12 @@ import DispMedicine from "./send";
 import {GetWithdrawTable, ConfirmWithdraw} from "./withdraw"
 import React from 'react';
 
+var outWapperStyle = {
+    textAlign: 'center',
+    padding: '20px'
+  // makesure here is String确保这里是一个字符串，以下是es6写法
+};
+
 class Dispenser extends React.Component {
     constructor(props) {
         super(props);
@@ -19,18 +25,23 @@ class Dispenser extends React.Component {
         window.location.replace("http://"+window.location.host+"/"+e.target.value);
         // console.log(window.location.pathname)
     }
+
     render() {
-        return <Router>
-            <Radio.Group  defaultValue={window.location.pathname.substr(1,8)} buttonStyle="solid" onChange={this.handleChange}>
-                <Radio.Button value="dispense">发药</Radio.Button>
-                <Radio.Button value="withdraw">退药</Radio.Button>
-            </Radio.Group>
-            <Routes>
-                <Route path = "/dispense"  element = {<DispMedicine upperSetState = {this.setState.bind(this)} upperState = {this.state}/>}/>
-                <Route path = "/withdraw" element = {<GetWithdrawTable upperSetState = {this.setState.bind(this)} upperState = {this.state}/>} />
-                <Route path = "/withdraw/withdrawTable" element = {<ConfirmWithdraw upperSetState = {this.setState.bind(this)} upperState = {this.state}/>} />
-            </Routes>
-        </Router>
+        return (
+        <div style={outWapperStyle}>
+            <Router>
+                <Radio.Group  defaultValue={window.location.pathname.substr(1,8)} buttonStyle="solid" onChange={this.handleChange}>
+                    <Radio.Button value="dispense">发药</Radio.Button>
+                    <Radio.Button value="withdraw">退药</Radio.Button>
+                </Radio.Group>
+                <Routes>
+                        <Route path = "/dispense"  element = {<DispMedicine upperSetState = {this.setState.bind(this)} upperState = {this.state}/>}/>
+                        <Route path = "/withdraw" element = {<GetWithdrawTable upperSetState = {this.setState.bind(this)} upperState = {this.state}/>} />
+                    <Route path = "/withdraw/withdrawTable" element = {<ConfirmWithdraw upperSetState = {this.setState.bind(this)} upperState = {this.state}/>} />
+                </Routes>
+            </Router>
+        </div>
+        )
     }
 
 }

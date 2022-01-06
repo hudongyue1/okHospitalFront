@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { fetchpost } from '../utils/zgfetch';
 import './login.scss';
 import { getLogin } from '../api';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -32,22 +33,23 @@ class Login extends Component {
         let loginres = await getLogin(this.state.userId, this.state.password);
         console.log("role:" + loginres.data.data.role);
         console.log("token:" + loginres.data.data.token);
-
+        // this.props.history.push('/patient')
+        
         switch (loginres.data.data.role) {
             case 1:
                 console.log("病人登录成功");
                 alert("登录成功，欢迎患者");
-                this.props.history.push("/ ");
+                this.props.navigator.navigate("/patient", { replace: true });
                 break;
             case 2:
                 console.log("医生登录成功");
                 alert("登录成功，欢迎医生");
-                this.props.history.push("/ ");
+
                 break;
             case 3:
                 console.log("配药师登录成功");
                 alert("登录成功，欢迎配药师");
-                this.props.history.push("/ ");
+
                 break;
             case 4:
                 console.log("药剂师登录成功")
@@ -72,7 +74,7 @@ class Login extends Component {
                 <div className="login-content">
                     {/* <span className="logo"><img src="http://www.sj-hospital.org/static/images/logo.png" alt="" /></span> */}
                     <h1>👌医院门诊系统</h1>
-                    <form onSubmit={this.handleSubmit.bind(this)}>
+                    <form onSubmit={this.handleSubmit.bind(this)} history={this.props.history}>
                         <label>
                             <span>用户名</span>
                             <input type="text" value={this.state.userName} onChange={this.textChange.bind(this, 'userId')} />
@@ -83,7 +85,7 @@ class Login extends Component {
                             <input type="password" value={this.state.passWord} onChange={this.textChange.bind(this, 'password')} />
                             <i className={this.state.passWordValid === false ? "error" : 'required'}>密码不能为空</i>
                         </label>
-                        <button type="submit" className={(("" === this.state.userId) || ("" === this.state.password)) ? "disabled" : "login-btn"} onClick={this.doLogin.bind(this)}>登录</button>
+                        <button navigate={this.props.navigator} type="submit" className={(("" === this.state.userId) || ("" === this.state.password)) ? "disabled" : "login-btn"} onClick={this.doLogin.bind(this)} >登录</button>
                     </form>
                 </div>
             </section>

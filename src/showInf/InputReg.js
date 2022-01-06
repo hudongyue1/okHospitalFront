@@ -39,7 +39,7 @@ const InputReg = (props) => {
     let inf = props.upperState.registrationInf;
     
 
-    inf["regiseterTime"] = changedValues.user.orderTime.format("YYYY/MM/DD HH:mm");
+    inf["regiseterTime"] = changedValues.user.orderTime.format("YYYY-MM-DD HH:mm:ss");
     console.log("inf");
     console.log(inf);
     props.upperSetState();
@@ -71,8 +71,8 @@ const InputReg = (props) => {
         name={['user', 'orderTime']}
         label="预约时间"
       >
-        <DatePicker disabled = {props.upperState.isSolid} showTime  format = {"YYYY/MM/DD HH:mm"} minuteStep={30}
-        defaultValue ={moment(props.upperState.isSolid ? props.upperState.subscriptionInf.subscribeTime : "2022/01/22 00:00")}/>
+        <DatePicker disabled = {props.upperState.isSolid} showTime  format = {"YYYY-MM-DD HH:mm:ss"} minuteStep={30}
+        defaultValue ={moment(props.upperState.isSolid ? props.upperState.subscriptionInf.subscribeTime : "2022-01-06 11:30:00")}/>
     </Form.Item>
     </Form>
   );

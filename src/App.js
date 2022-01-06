@@ -1,10 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Login from './login/index';
-import PageLogin from './login.js';
-import  Patient from './Patient.js'
+import Charger from './charger/charger.js';
 import Test from './Test.js'
 import RegInf from './showInf/RegInf';
 import CharInf from './showInf/CharInf';
@@ -13,7 +12,8 @@ import MedicineList from './pharmacist/medicineList'
 import Pharmacist from './pharmacist/pharmacist';
 import DispMedicine from './dispencer/send';
 import Dispenser from './dispencer/dispenser';
-import Doctor from './doctor/doctor';
+// import { useNavigate } from 'react-router-dom';
+// const navigate = useNavigate();
 /*
 function AppLayout() {
     const [token, setToken] = useState();
@@ -36,11 +36,10 @@ function AppLayout() {
 }
 */
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function App() {
+  // function handleClick() {
+  //     history.push("/report");
+  // }
   /*
   return (
     <div className="App">
@@ -60,10 +59,19 @@ class App extends React.Component {
       </header>
     </div>
   );
-  */
-    render() {
-    return <Test upperState={this.state} upperSetState = {this.setState.bind(this)}></Test> 
-    }
+      {/* <Dispenser/> */
+        return (
+          <div>
+            <Router>
+                <Routes>
+                    <Route path = "/" element = {<Login/>} exact />
+                    <Route path = "/login" element = {<Login/>}/>
+                    <Route path = "/charger/*" element = {<Charger/>}/> 
+                </Routes>    
+            </Router>
+          </div>
+          // <Dispenser />
+      );
 }
 
 export default App;
