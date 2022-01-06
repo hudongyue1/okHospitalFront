@@ -98,4 +98,8 @@ const getCheckList = (token) => {
     return instance.get("doctor/getCheckList?token="+token);
 }
 
-export {getSubs,getDeps,getExps,getChar,postChar,postReg, getMeds, postPha, getMedsD, postDis,getLogin, postWithdraw, getMTable, postDoss, getMedicineList, getCheckList}
+const getPat = (token) => {
+    return instance.get("doctor/getAPatient?doctorId=dt2&token="+token);
+}
+
+export {getSubs,getDeps,getExps,getChar,postChar,postReg, getMeds, postPha, getMedsD, postDis,getLogin, postWithdraw, getMTable, postDoss, getMedicineList, getCheckList, getPat}

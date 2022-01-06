@@ -1,11 +1,12 @@
-import { Button, TextArea } from "antd";
+import { Button, Input } from "antd";
 import {useNavigate} from "react-router-dom";
 import { postDoss } from "../api";
 function Dossier(props) {
     const nav = useNavigate();
     const handleClick = (e) => {
-        postDoss(props.upperState.doctorId, props.upperState.token, props.upperState.patientId).then({
-            nav("doctor/consultation");
+        nav("doctor");
+        postDoss(props.upperState.doctorId, props.upperState.token, props.upperState.patientId).then((res) => {
+            nav("doctor");
         })
     }
     const handleChange = (e) => {
@@ -13,11 +14,13 @@ function Dossier(props) {
     }
 
     const handleBack = (e) => {
-        nav("doctor/consultation")
+        nav("doctor")
     }
+    console.log(props);
     return <div>
-        <TextArea  value = {props.upperState.dossier} autoSize = {{minRows: 4, maxRows: 6}} showCount maxLength={500} onChange={handleChange} />
-        <Button onClick={handleBack}>返回<Button/>
+        <Input.TextArea  value = {props.upperState.dossier} autoSize = {{minRows: 4, maxRows: 6}} showCount maxLength={500} onChange={handleChange} />
+        <Button onClick={handleBack}>返回</Button>
         <Button onClick = {handleClick}>确认病历</Button>
     </div>
 }
+export default Dossier;

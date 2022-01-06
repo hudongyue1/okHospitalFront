@@ -12,6 +12,8 @@ import MedicineList from './pharmacist/medicineList'
 import Pharmacist from './pharmacist/pharmacist';
 import DispMedicine from './dispencer/send';
 import Dispenser from './dispencer/dispenser';
+import PatientInf from './doctor/patientInf';
+import Doctor from './doctor/doctor';
 // import { useNavigate } from 'react-router-dom';
 // const navigate = useNavigate();
 /*
@@ -61,16 +63,16 @@ function App() {
   );
       {/* <Dispenser/> */
         return (
-          <div>
-            <Router>
-                <Routes>
-                    <Route path = "/" element = {<Login/>} exact />
-                    <Route path = "/login" element = {<Login/>}/>
-                    <Route path = "/charger/*" element = {<Charger/>}/> 
-                </Routes>    
-            </Router>
-          </div>
-          // <Dispenser />
+          // <div>
+          //   <Router>
+          //       <Routes>
+          //           <Route path = "/" element = {<Login/>} exact />
+          //           <Route path = "/login" element = {<Login/>}/>
+          //           <Route path = "/charger/*" element = {<Charger/>}/> 
+          //       </Routes>    
+          //   </Router>
+          // </div>
+          <Doctor />
       );
 }
 

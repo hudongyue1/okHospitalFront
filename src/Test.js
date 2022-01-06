@@ -105,11 +105,16 @@ const Test = (props) => {
     ]
     
     let pos = 0;
-    
+    // let f = new Function("num", "console.log(this.props);");
+    // console.log(this);
+    // f  = f.bind(this);
+    // f(1)
+    medicineListInfor[0]['func'] = (e) => {props.upperSetState({0: e}); console.log('Props are:');console.log(props.upperState)}
+    medicineListInfor[1]['func'] = (e) => {props.upperSetState({1: e}); console.log('Props are:');console.log(props.upperState)}
+    medicineListInfor[2]['func'] = (e) => {props.upperSetState({2: e}); console.log('Props are:');console.log(props.upperState)}
+    medicineListInfor[3]['func'] = (e) => {props.upperSetState({3: e}); console.log('Props are:');console.log(props.upperState)}
     for(pos in medicineListInfor) {
-        
         medicineListInfor[pos]['key'] = pos;
-        medicineListInfor[pos]['func'] = (e) => {props.upperSetState({[pos]: e}); console.log("Props are:");console.log(props.upperState)};
         medicineListInfor[pos]["chooseNums"] = <InputNumber min={0} max={medicineListInfor[pos]['medicineNum']} defaultValue={0} onChange={medicineListInfor[pos]['func']}/>
     }
     
@@ -128,23 +133,7 @@ const Test = (props) => {
   const [selectionType, setSelectionType] = useState('checkbox');
   return (
     <div>
-      <Radio.Group
-        onChange={({ target: { value } }) => {
-          setSelectionType(value);
-        }}
-        value={selectionType}
-      >
-        <Radio value="checkbox">Checkbox</Radio>
-        <Radio value="radio">radio</Radio>
-      </Radio.Group>
-
-      <Divider />
-
       <Table
-        rowSelection={{
-          type: selectionType,
-          ...rowSelection,
-        }}
         columns={columns}
         dataSource={medicineListInfor}
       />
