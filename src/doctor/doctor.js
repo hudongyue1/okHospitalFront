@@ -20,13 +20,13 @@ class Doctor extends React.Component {
 
     render() {
         return <div>
-            <Router>
-                <Routes>
-                    <Route path = "doctor" element = {<MainPage/>}/>
-                    <Route path = "doctor/medicine" element = {   <div>   <PatientInf upperSetState = {this.setState.bind(this)} upperState = {this.state}/>  <MedicineTableList upperSetState = {this.setState.bind(this)} upperState = {this.state}  />  </div> }   />
-                    <Route path = "doctor/dossier" element = {   <div>   <PatientInf upperSetState = {this.setState.bind(this)} upperState = {this.state}/>   <Dossier upperSetState = {this.setState.bind(this)} upperState = {this.state}  />  </div>   }   />
-                </Routes>
-            </Router> 
+
+            <Routes>
+                <Route path = "/" element = {<MainPage/>}/>
+                <Route path = "/medicine" element = {   <div>   <PatientInf upperSetState = {this.setState.bind(this)} upperState = {this.state}/>  <MedicineTableList upperSetState = {this.setState.bind(this)} upperState = {this.state}  />  </div> }   />
+                <Route path = "/dossier" element = {   <div>   <PatientInf upperSetState = {this.setState.bind(this)} upperState = {this.state}/>   <Dossier upperSetState = {this.setState.bind(this)} upperState = {this.state}  />  </div>   }   />
+                <Route path = "/dossier/doctor" element = {<MainPage/>}/>
+            </Routes> 
         </div>
     }
 }
